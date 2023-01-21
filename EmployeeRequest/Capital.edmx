@@ -1,0 +1,1595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="capitalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="company_name" Type="nvarchar" MaxLength="1000" />
+          <Property Name="reg_no" Type="nchar" MaxLength="20" />
+          <Property Name="national_code" Type="nchar" MaxLength="20" />
+          <Property Name="address" Type="nvarchar" MaxLength="300" />
+          <Property Name="postal_code" Type="nchar" MaxLength="10" />
+          <Property Name="tel" Type="nvarchar" MaxLength="300" />
+          <Property Name="bank_acc_desc" Type="nvarchar" MaxLength="1000" />
+          <Property Name="end_date_s" Type="nchar" MaxLength="8" />
+          <Property Name="end_date_e" Type="nchar" MaxLength="8" />
+          <Property Name="share_amnt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cap_percent" Type="nvarchar" MaxLength="100" />
+          <Property Name="pre_cap_amnt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="cap_amnt" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="share_type" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="form_type" Type="nchar" MaxLength="1" />
+          <Property Name="form_path" Type="nvarchar" MaxLength="100" />
+          <Property Name="login_message" Type="nvarchar" MaxLength="300" />
+          <Property Name="link_add_1" Type="nvarchar" MaxLength="300" />
+          <Property Name="link_add_2" Type="nvarchar" MaxLength="300" />
+          <Property Name="login_type" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="Lock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DeviceId" Type="nvarchar" MaxLength="500" />
+          <Property Name="CustomerName" Type="nvarchar" MaxLength="500" />
+          <Property Name="Id" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ValidDate" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="management_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="surname" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="mobile" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="meeting_print">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shrh_code" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="shrh_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="print_flag" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="meeting_users">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shrh_code" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="shrh_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="presence_type" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="status" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="questions">
+          <Key>
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+          </Key>
+          <Property Name="qid" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="shrh_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="desc1" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shareholder">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shr_meet_date" />
+          </Key>
+          <Property Name="shrh_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="300" />
+          <Property Name="surname" Type="nvarchar" MaxLength="300" />
+          <Property Name="father" Type="nvarchar" MaxLength="300" />
+          <Property Name="cert_no" Type="nchar" MaxLength="20" />
+          <Property Name="nat_code" Type="nvarchar" MaxLength="20" />
+          <Property Name="bbs_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="mobile" Type="nchar" MaxLength="10" />
+          <Property Name="s_address" Type="nvarchar" MaxLength="300" />
+          <Property Name="s_postal_code" Type="nchar" MaxLength="10" />
+          <Property Name="share" Type="bigint" />
+          <Property Name="spri_qunt" Type="bigint" />
+          <Property Name="spri_amnt" Type="money" />
+          <Property Name="credit_amnt" Type="money" />
+          <Property Name="pay_amnt" Type="money" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="pay_id" Type="nvarchar" MaxLength="255" />
+          <Property Name="kind" Type="nchar" MaxLength="1" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="relation_id" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="shr_meeting">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="meet_add" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="meet_time" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="form_name" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="shrh_vote">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="svot_item_no" />
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="svot_no" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="svot_item_no" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" />
+          <Property Name="vote" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="shrh_code" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="check_sum" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="shrh_vote_sub">
+          <Key>
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="svot_no" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="shr_meet_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="shr_meet_date" Type="nchar" MaxLength="8" Nullable="false" />
+          <Property Name="desc1" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="svot_kind" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="vote_need" Type="nchar" MaxLength="1" Nullable="false" />
+          <Property Name="max_item" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="voting_start_flag" Type="nchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="svot_item">
+          <Key>
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="svot_item_no" />
+          </Key>
+          <Property Name="svot_no" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="svot_item_no" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_id" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="desc1" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="update_date" Type="datetime" Nullable="false" />
+          <Property Name="comp_id" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="picture" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_management_user_company">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="management_user" Type="Self.management_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="management_user">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_print_management_user">
+          <End Role="management_user" Type="Self.management_user" Multiplicity="0..1" />
+          <End Role="meeting_print" Type="Self.meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_print_shareholder">
+          <End Role="shareholder" Type="Self.shareholder" Multiplicity="1" />
+          <End Role="meeting_print" Type="Self.meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shareholder">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_print_shr_meeting">
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="1" />
+          <End Role="meeting_print" Type="Self.meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_users_shareholder">
+          <End Role="shareholder" Type="Self.shareholder" Multiplicity="1" />
+          <End Role="meeting_users" Type="Self.meeting_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shareholder">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Principal>
+            <Dependent Role="meeting_users">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_users_shr_meeting">
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="1" />
+          <End Role="meeting_users" Type="Self.meeting_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questions_company">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questions_meeting_users">
+          <End Role="meeting_users" Type="Self.meeting_users" Multiplicity="1" />
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questions_shr_meeting">
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="1" />
+          <End Role="questions" Type="Self.questions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="questions">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shareholder_company">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="shareholder" Type="Self.shareholder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shareholder">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shr_meeting_management_user">
+          <End Role="management_user" Type="Self.management_user" Multiplicity="1" />
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shr_meeting">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_company">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="shrh_vote" Type="Self.shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_management_user">
+          <End Role="management_user" Type="Self.management_user" Multiplicity="0..1" />
+          <End Role="shrh_vote" Type="Self.shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_meeting_users">
+          <End Role="meeting_users" Type="Self.meeting_users" Multiplicity="1" />
+          <End Role="shrh_vote" Type="Self.shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_shr_meeting">
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="1" />
+          <End Role="shrh_vote" Type="Self.shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_sub_management_user">
+          <End Role="management_user" Type="Self.management_user" Multiplicity="1" />
+          <End Role="shrh_vote_sub" Type="Self.shrh_vote_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote_sub">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_sub_shr_meeting">
+          <End Role="shr_meeting" Type="Self.shr_meeting" Multiplicity="1" />
+          <End Role="shrh_vote_sub" Type="Self.shrh_vote_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote_sub">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_svot_item">
+          <End Role="svot_item" Type="Self.svot_item" Multiplicity="1" />
+          <End Role="shrh_vote" Type="Self.shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="svot_item">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="svot_item_no" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="svot_item_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_company">
+          <End Role="company" Type="Self.company" Multiplicity="1" />
+          <End Role="svot_item" Type="Self.svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_management_user">
+          <End Role="management_user" Type="Self.management_user" Multiplicity="1" />
+          <End Role="svot_item" Type="Self.svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_shrh_vote_sub">
+          <End Role="shrh_vote_sub" Type="Self.shrh_vote_sub" Multiplicity="1" />
+          <End Role="svot_item" Type="Self.svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shrh_vote_sub">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="f_array1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+          <Parameter Name="parm" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="f_array2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+          <Parameter Name="parm" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="f_array3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="numeric">
+          <Parameter Name="parm" Type="numeric" Mode="In" />
+        </Function>
+        <Function Name="f_array4" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="parm" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_array5" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="parm" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_array6" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+          <Parameter Name="parm" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_date_m2s" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="date" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="f_date_s2m" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="datetime">
+          <Parameter Name="date" Type="char" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="capitalModelStoreContainer">
+          <EntitySet Name="company" EntityType="Self.company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Lock" EntityType="Self.Lock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="management_user" EntityType="Self.management_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting_print" EntityType="Self.meeting_print" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="meeting_users" EntityType="Self.meeting_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="questions" EntityType="Self.questions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shareholder" EntityType="Self.shareholder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shr_meeting" EntityType="Self.shr_meeting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shrh_vote" EntityType="Self.shrh_vote" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="shrh_vote_sub" EntityType="Self.shrh_vote_sub" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="svot_item" EntityType="Self.svot_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_management_user_company" Association="Self.FK_management_user_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="management_user" EntitySet="management_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_print_management_user" Association="Self.FK_meeting_print_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_print_shareholder" Association="Self.FK_meeting_print_shareholder">
+            <End Role="shareholder" EntitySet="shareholder" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_print_shr_meeting" Association="Self.FK_meeting_print_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_users_shareholder" Association="Self.FK_meeting_users_shareholder">
+            <End Role="shareholder" EntitySet="shareholder" />
+            <End Role="meeting_users" EntitySet="meeting_users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_users_shr_meeting" Association="Self.FK_meeting_users_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="meeting_users" EntitySet="meeting_users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questions_company" Association="Self.FK_questions_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questions_meeting_users" Association="Self.FK_questions_meeting_users">
+            <End Role="meeting_users" EntitySet="meeting_users" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questions_shr_meeting" Association="Self.FK_questions_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="questions" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shareholder_company" Association="Self.FK_shareholder_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="shareholder" EntitySet="shareholder" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shr_meeting_management_user" Association="Self.FK_shr_meeting_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_company" Association="Self.FK_shrh_vote_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_management_user" Association="Self.FK_shrh_vote_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_meeting_users" Association="Self.FK_shrh_vote_meeting_users">
+            <End Role="meeting_users" EntitySet="meeting_users" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_shr_meeting" Association="Self.FK_shrh_vote_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_sub_management_user" Association="Self.FK_shrh_vote_sub_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_sub_shr_meeting" Association="Self.FK_shrh_vote_sub_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_svot_item" Association="Self.FK_shrh_vote_svot_item">
+            <End Role="svot_item" EntitySet="svot_item" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_company" Association="Self.FK_svot_item_company">
+            <End Role="company" EntitySet="company" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_management_user" Association="Self.FK_svot_item_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_shrh_vote_sub" Association="Self.FK_svot_item_shrh_vote_sub">
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="capitalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="capitalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="management_user" EntityType="capitalModel.management_user" />
+          <EntitySet Name="shr_meeting" EntityType="capitalModel.shr_meeting" />
+          <EntitySet Name="shrh_vote_sub" EntityType="capitalModel.shrh_vote_sub" />
+          <EntitySet Name="svot_item" EntityType="capitalModel.svot_item" />
+          <EntitySet Name="sysdiagrams" EntityType="capitalModel.sysdiagram" />
+          <AssociationSet Name="FK_shr_meeting_management_user" Association="capitalModel.FK_shr_meeting_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_sub_management_user" Association="capitalModel.FK_shrh_vote_sub_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_management_user" Association="capitalModel.FK_svot_item_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_sub_shr_meeting" Association="capitalModel.FK_shrh_vote_sub_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_shrh_vote_sub" Association="capitalModel.FK_svot_item_shrh_vote_sub">
+            <End Role="shrh_vote_sub" EntitySet="shrh_vote_sub" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(capitalModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(capitalModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="questions" EntityType="capitalModel.question" />
+          <AssociationSet Name="FK_questions_shr_meeting" Association="capitalModel.FK_questions_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="question" EntitySet="questions" />
+          </AssociationSet>
+          <EntitySet Name="shrh_vote" EntityType="capitalModel.shrh_vote" />
+          <AssociationSet Name="FK_shrh_vote_management_user" Association="capitalModel.FK_shrh_vote_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_shr_meeting" Association="capitalModel.FK_shrh_vote_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_svot_item" Association="capitalModel.FK_shrh_vote_svot_item">
+            <End Role="svot_item" EntitySet="svot_item" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <EntitySet Name="Locks" EntityType="capitalModel.Lock" />
+          <EntitySet Name="companies" EntityType="capitalModel.company" />
+          <EntitySet Name="meeting_users" EntityType="capitalModel.meeting_users" />
+          <EntitySet Name="shareholders" EntityType="capitalModel.shareholder" />
+          <AssociationSet Name="FK_management_user_company" Association="capitalModel.FK_management_user_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="management_user" EntitySet="management_user" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questions_company" Association="capitalModel.FK_questions_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="question" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shareholder_company" Association="capitalModel.FK_shareholder_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="shareholder" EntitySet="shareholders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_company" Association="capitalModel.FK_shrh_vote_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <AssociationSet Name="FK_svot_item_company" Association="capitalModel.FK_svot_item_company">
+            <End Role="company" EntitySet="companies" />
+            <End Role="svot_item" EntitySet="svot_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_users_shareholder" Association="capitalModel.FK_meeting_users_shareholder">
+            <End Role="shareholder" EntitySet="shareholders" />
+            <End Role="meeting_users" EntitySet="meeting_users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_users_shr_meeting" Association="capitalModel.FK_meeting_users_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="meeting_users" EntitySet="meeting_users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_questions_meeting_users" Association="capitalModel.FK_questions_meeting_users">
+            <End Role="meeting_users" EntitySet="meeting_users" />
+            <End Role="question" EntitySet="questions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_shrh_vote_meeting_users" Association="capitalModel.FK_shrh_vote_meeting_users">
+            <End Role="meeting_users" EntitySet="meeting_users" />
+            <End Role="shrh_vote" EntitySet="shrh_vote" />
+          </AssociationSet>
+          <EntitySet Name="meeting_print" EntityType="capitalModel.meeting_print" />
+          <AssociationSet Name="FK_meeting_print_management_user" Association="capitalModel.FK_meeting_print_management_user">
+            <End Role="management_user" EntitySet="management_user" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_print_shareholder" Association="capitalModel.FK_meeting_print_shareholder">
+            <End Role="shareholder" EntitySet="shareholders" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          <AssociationSet Name="FK_meeting_print_shr_meeting" Association="capitalModel.FK_meeting_print_shr_meeting">
+            <End Role="shr_meeting" EntitySet="shr_meeting" />
+            <End Role="meeting_print" EntitySet="meeting_print" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="management_user">
+          <Key>
+            <PropertyRef Name="user_id" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_shr_meeting_management_user" FromRole="management_user" ToRole="shr_meeting" />
+          <NavigationProperty Name="shrh_vote_sub" Relationship="capitalModel.FK_shrh_vote_sub_management_user" FromRole="management_user" ToRole="shrh_vote_sub" />
+          <NavigationProperty Name="svot_item" Relationship="capitalModel.FK_svot_item_management_user" FromRole="management_user" ToRole="svot_item" />
+          <NavigationProperty Name="shrh_vote" Relationship="capitalModel.FK_shrh_vote_management_user" FromRole="management_user" ToRole="shrh_vote" />
+          <NavigationProperty Name="company" Relationship="capitalModel.FK_management_user_company" FromRole="management_user" ToRole="company" />
+          <NavigationProperty Name="meeting_print" Relationship="capitalModel.FK_meeting_print_management_user" FromRole="management_user" ToRole="meeting_print" />
+        </EntityType>
+        <EntityType Name="shr_meeting">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="meet_add" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="meet_time" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_shr_meeting_management_user" FromRole="shr_meeting" ToRole="management_user" />
+          <NavigationProperty Name="shrh_vote_sub" Relationship="capitalModel.FK_shrh_vote_sub_shr_meeting" FromRole="shr_meeting" ToRole="shrh_vote_sub" />
+          <NavigationProperty Name="questions" Relationship="capitalModel.FK_questions_shr_meeting" FromRole="shr_meeting" ToRole="question" />
+          <NavigationProperty Name="shrh_vote" Relationship="capitalModel.FK_shrh_vote_shr_meeting" FromRole="shr_meeting" ToRole="shrh_vote" />
+          <Property Name="form_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="meeting_users" Relationship="capitalModel.FK_meeting_users_shr_meeting" FromRole="shr_meeting" ToRole="meeting_users" />
+          <NavigationProperty Name="meeting_print" Relationship="capitalModel.FK_meeting_print_shr_meeting" FromRole="shr_meeting" ToRole="meeting_print" />
+        </EntityType>
+        <EntityType Name="shrh_vote_sub">
+          <Key>
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="svot_no" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="desc1" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="svot_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="vote_need" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="max_item" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_shrh_vote_sub_management_user" FromRole="shrh_vote_sub" ToRole="management_user" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_shrh_vote_sub_shr_meeting" FromRole="shrh_vote_sub" ToRole="shr_meeting" />
+          <NavigationProperty Name="svot_item" Relationship="capitalModel.FK_svot_item_shrh_vote_sub" FromRole="shrh_vote_sub" ToRole="svot_item" />
+          <Property Name="voting_start_flag" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="svot_item">
+          <Key>
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="svot_item_no" />
+          </Key>
+          <Property Name="svot_no" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="svot_item_no" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_id" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="desc1" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_svot_item_management_user" FromRole="svot_item" ToRole="management_user" />
+          <NavigationProperty Name="shrh_vote_sub" Relationship="capitalModel.FK_svot_item_shrh_vote_sub" FromRole="svot_item" ToRole="shrh_vote_sub" />
+          <NavigationProperty Name="shrh_vote" Relationship="capitalModel.FK_shrh_vote_svot_item" FromRole="svot_item" ToRole="shrh_vote" />
+          <NavigationProperty Name="company" Relationship="capitalModel.FK_svot_item_company" FromRole="svot_item" ToRole="company" />
+          <Property Name="picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_shr_meeting_management_user">
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="1" />
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shr_meeting">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_sub_management_user">
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote_sub" Role="shrh_vote_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote_sub">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_management_user">
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="1" />
+          <End Type="capitalModel.svot_item" Role="svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_sub_shr_meeting">
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote_sub" Role="shrh_vote_sub" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote_sub">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_shrh_vote_sub">
+          <End Type="capitalModel.shrh_vote_sub" Role="shrh_vote_sub" Multiplicity="1" />
+          <End Type="capitalModel.svot_item" Role="svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shrh_vote_sub">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="question">
+          <Key>
+            <PropertyRef Name="qid" />
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+          </Key>
+          <Property Name="qid" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="desc1" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_questions_shr_meeting" FromRole="question" ToRole="shr_meeting" />
+          <NavigationProperty Name="company" Relationship="capitalModel.FK_questions_company" FromRole="question" ToRole="company" />
+          <NavigationProperty Name="meeting_users" Relationship="capitalModel.FK_questions_meeting_users" FromRole="question" ToRole="meeting_users" />
+        </EntityType>
+        <Association Name="FK_questions_shr_meeting">
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="1" />
+          <End Type="capitalModel.question" Role="question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="shrh_vote">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="svot_no" />
+            <PropertyRef Name="svot_item_no" />
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="svot_no" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="svot_item_no" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="user_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="vote" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_shrh_vote_management_user" FromRole="shrh_vote" ToRole="management_user" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_shrh_vote_shr_meeting" FromRole="shrh_vote" ToRole="shr_meeting" />
+          <NavigationProperty Name="svot_item" Relationship="capitalModel.FK_shrh_vote_svot_item" FromRole="shrh_vote" ToRole="svot_item" />
+          <NavigationProperty Name="company" Relationship="capitalModel.FK_shrh_vote_company" FromRole="shrh_vote" ToRole="company" />
+          <NavigationProperty Name="meeting_users" Relationship="capitalModel.FK_shrh_vote_meeting_users" FromRole="shrh_vote" ToRole="meeting_users" />
+          <Property Name="check_sum" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_shrh_vote_management_user">
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="0..1" />
+          <End Type="capitalModel.shrh_vote" Role="shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_shr_meeting">
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote" Role="shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_svot_item">
+          <End Type="capitalModel.svot_item" Role="svot_item" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote" Role="shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="svot_item">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="svot_item_no" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="svot_no" />
+              <PropertyRef Name="svot_item_no" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Lock">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="DeviceId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ValidDate" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="company">
+          <Key>
+            <PropertyRef Name="comp_id" />
+          </Key>
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="company_name" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="reg_no" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="national_code" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="postal_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="tel" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="bank_acc_desc" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="end_date_s" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="end_date_e" Type="String" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="share_amnt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cap_percent" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="pre_cap_amnt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="cap_amnt" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="share_type" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="form_type" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="form_path" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="login_message" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="link_add_1" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="link_add_2" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_management_user_company" FromRole="company" ToRole="management_user" />
+          <NavigationProperty Name="questions" Relationship="capitalModel.FK_questions_company" FromRole="company" ToRole="question" />
+          <NavigationProperty Name="shareholders" Relationship="capitalModel.FK_shareholder_company" FromRole="company" ToRole="shareholder" />
+          <NavigationProperty Name="shrh_vote" Relationship="capitalModel.FK_shrh_vote_company" FromRole="company" ToRole="shrh_vote" />
+          <NavigationProperty Name="svot_item" Relationship="capitalModel.FK_svot_item_company" FromRole="company" ToRole="svot_item" />
+          <Property Name="login_type" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="meeting_users">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shrh_code" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="presence_type" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="shareholder" Relationship="capitalModel.FK_meeting_users_shareholder" FromRole="meeting_users" ToRole="shareholder" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_meeting_users_shr_meeting" FromRole="meeting_users" ToRole="shr_meeting" />
+          <NavigationProperty Name="questions" Relationship="capitalModel.FK_questions_meeting_users" FromRole="meeting_users" ToRole="question" />
+          <NavigationProperty Name="shrh_vote" Relationship="capitalModel.FK_shrh_vote_meeting_users" FromRole="meeting_users" ToRole="shrh_vote" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="shareholder">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shr_meet_date" />
+          </Key>
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="name" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="surname" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="father" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="cert_no" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Name="nat_code" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="bbs_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="mobile" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="s_address" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="s_postal_code" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="share" Type="Int64" />
+          <Property Name="spri_qunt" Type="Int64" />
+          <Property Name="spri_amnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="credit_amnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="pay_amnt" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="pay_id" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="kind" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="company" Relationship="capitalModel.FK_shareholder_company" FromRole="shareholder" ToRole="company" />
+          <NavigationProperty Name="meeting_users" Relationship="capitalModel.FK_meeting_users_shareholder" FromRole="shareholder" ToRole="meeting_users" />
+          <Property Name="relation_id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="meeting_print" Relationship="capitalModel.FK_meeting_print_shareholder" FromRole="shareholder" ToRole="meeting_print" />
+        </EntityType>
+        <Association Name="FK_management_user_company">
+          <End Type="capitalModel.company" Role="company" Multiplicity="1" />
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="management_user">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questions_company">
+          <End Type="capitalModel.company" Role="company" Multiplicity="1" />
+          <End Type="capitalModel.question" Role="question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shareholder_company">
+          <End Type="capitalModel.company" Role="company" Multiplicity="1" />
+          <End Type="capitalModel.shareholder" Role="shareholder" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shareholder">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_company">
+          <End Type="capitalModel.company" Role="company" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote" Role="shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_svot_item_company">
+          <End Type="capitalModel.company" Role="company" Multiplicity="1" />
+          <End Type="capitalModel.svot_item" Role="svot_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="company">
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="svot_item">
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_users_shareholder">
+          <End Type="capitalModel.shareholder" Role="shareholder" Multiplicity="1" />
+          <End Type="capitalModel.meeting_users" Role="meeting_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shareholder">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Principal>
+            <Dependent Role="meeting_users">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_users_shr_meeting">
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="1" />
+          <End Type="capitalModel.meeting_users" Role="meeting_users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_questions_meeting_users">
+          <End Type="capitalModel.meeting_users" Role="meeting_users" Multiplicity="1" />
+          <End Type="capitalModel.question" Role="question" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Principal>
+            <Dependent Role="question">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_shrh_vote_meeting_users">
+          <End Type="capitalModel.meeting_users" Role="meeting_users" Multiplicity="1" />
+          <End Type="capitalModel.shrh_vote" Role="shrh_vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="meeting_users">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Principal>
+            <Dependent Role="shrh_vote">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shrh_code" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="meeting_print">
+          <Key>
+            <PropertyRef Name="shr_meet_kind" />
+            <PropertyRef Name="shr_meet_date" />
+            <PropertyRef Name="comp_id" />
+            <PropertyRef Name="shrh_code" />
+          </Key>
+          <Property Name="shr_meet_kind" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="shr_meet_date" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="true" />
+          <Property Name="comp_id" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="print_flag" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="user_id" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="management_user" Relationship="capitalModel.FK_meeting_print_management_user" FromRole="meeting_print" ToRole="management_user" />
+          <NavigationProperty Name="shareholder" Relationship="capitalModel.FK_meeting_print_shareholder" FromRole="meeting_print" ToRole="shareholder" />
+          <NavigationProperty Name="shr_meeting" Relationship="capitalModel.FK_meeting_print_shr_meeting" FromRole="meeting_print" ToRole="shr_meeting" />
+          <Property Name="status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_meeting_print_management_user">
+          <End Type="capitalModel.management_user" Role="management_user" Multiplicity="1" />
+          <End Type="capitalModel.meeting_print" Role="meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="management_user">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="user_id" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_print_shareholder">
+          <End Type="capitalModel.shareholder" Role="shareholder" Multiplicity="1" />
+          <End Type="capitalModel.meeting_print" Role="meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shareholder">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="shrh_code" />
+              <PropertyRef Name="comp_id" />
+              <PropertyRef Name="shr_meet_date" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_meeting_print_shr_meeting">
+          <End Type="capitalModel.shr_meeting" Role="shr_meeting" Multiplicity="1" />
+          <End Type="capitalModel.meeting_print" Role="meeting_print" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="shr_meeting">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Principal>
+            <Dependent Role="meeting_print">
+              <PropertyRef Name="shr_meet_kind" />
+              <PropertyRef Name="shr_meet_date" />
+              <PropertyRef Name="comp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="capitalModelStoreContainer" CdmEntityContainer="capitalEntities">
+          <EntitySetMapping Name="management_user">
+            <EntityTypeMapping TypeName="capitalModel.management_user">
+              <MappingFragment StoreEntitySet="management_user">
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shr_meeting">
+            <EntityTypeMapping TypeName="capitalModel.shr_meeting">
+              <MappingFragment StoreEntitySet="shr_meeting">
+                <ScalarProperty Name="form_name" ColumnName="form_name" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="meet_time" ColumnName="meet_time" />
+                <ScalarProperty Name="meet_add" ColumnName="meet_add" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shrh_vote_sub">
+            <EntityTypeMapping TypeName="capitalModel.shrh_vote_sub">
+              <MappingFragment StoreEntitySet="shrh_vote_sub">
+                <ScalarProperty Name="voting_start_flag" ColumnName="voting_start_flag" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="max_item" ColumnName="max_item" />
+                <ScalarProperty Name="vote_need" ColumnName="vote_need" />
+                <ScalarProperty Name="svot_kind" ColumnName="svot_kind" />
+                <ScalarProperty Name="desc1" ColumnName="desc1" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="svot_no" ColumnName="svot_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="svot_item">
+            <EntityTypeMapping TypeName="capitalModel.svot_item">
+              <MappingFragment StoreEntitySet="svot_item">
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="desc1" ColumnName="desc1" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="svot_item_no" ColumnName="svot_item_no" />
+                <ScalarProperty Name="svot_no" ColumnName="svot_no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="capitalModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="capitalModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="capitalModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="capitalModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="capitalModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="capitalModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="capitalModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="capitalModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="capitalModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="capitalModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="questions">
+            <EntityTypeMapping TypeName="capitalModel.question">
+              <MappingFragment StoreEntitySet="questions">
+                <ScalarProperty Name="desc1" ColumnName="desc1" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+                <ScalarProperty Name="qid" ColumnName="qid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shrh_vote">
+            <EntityTypeMapping TypeName="capitalModel.shrh_vote">
+              <MappingFragment StoreEntitySet="shrh_vote">
+                <ScalarProperty Name="check_sum" ColumnName="check_sum" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="vote" ColumnName="vote" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="svot_item_no" ColumnName="svot_item_no" />
+                <ScalarProperty Name="svot_no" ColumnName="svot_no" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locks">
+            <EntityTypeMapping TypeName="capitalModel.Lock">
+              <MappingFragment StoreEntitySet="Lock">
+                <ScalarProperty Name="ValidDate" ColumnName="ValidDate" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="companies">
+            <EntityTypeMapping TypeName="capitalModel.company">
+              <MappingFragment StoreEntitySet="company">
+                <ScalarProperty Name="login_type" ColumnName="login_type" />
+                <ScalarProperty Name="link_add_2" ColumnName="link_add_2" />
+                <ScalarProperty Name="link_add_1" ColumnName="link_add_1" />
+                <ScalarProperty Name="login_message" ColumnName="login_message" />
+                <ScalarProperty Name="form_path" ColumnName="form_path" />
+                <ScalarProperty Name="form_type" ColumnName="form_type" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="share_type" ColumnName="share_type" />
+                <ScalarProperty Name="cap_amnt" ColumnName="cap_amnt" />
+                <ScalarProperty Name="pre_cap_amnt" ColumnName="pre_cap_amnt" />
+                <ScalarProperty Name="cap_percent" ColumnName="cap_percent" />
+                <ScalarProperty Name="share_amnt" ColumnName="share_amnt" />
+                <ScalarProperty Name="end_date_e" ColumnName="end_date_e" />
+                <ScalarProperty Name="end_date_s" ColumnName="end_date_s" />
+                <ScalarProperty Name="bank_acc_desc" ColumnName="bank_acc_desc" />
+                <ScalarProperty Name="tel" ColumnName="tel" />
+                <ScalarProperty Name="postal_code" ColumnName="postal_code" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="national_code" ColumnName="national_code" />
+                <ScalarProperty Name="reg_no" ColumnName="reg_no" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_users">
+            <EntityTypeMapping TypeName="capitalModel.meeting_users">
+              <MappingFragment StoreEntitySet="meeting_users">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="presence_type" ColumnName="presence_type" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="shareholders">
+            <EntityTypeMapping TypeName="capitalModel.shareholder">
+              <MappingFragment StoreEntitySet="shareholder">
+                <ScalarProperty Name="relation_id" ColumnName="relation_id" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="kind" ColumnName="kind" />
+                <ScalarProperty Name="pay_id" ColumnName="pay_id" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="pay_amnt" ColumnName="pay_amnt" />
+                <ScalarProperty Name="credit_amnt" ColumnName="credit_amnt" />
+                <ScalarProperty Name="spri_amnt" ColumnName="spri_amnt" />
+                <ScalarProperty Name="spri_qunt" ColumnName="spri_qunt" />
+                <ScalarProperty Name="share" ColumnName="share" />
+                <ScalarProperty Name="s_postal_code" ColumnName="s_postal_code" />
+                <ScalarProperty Name="s_address" ColumnName="s_address" />
+                <ScalarProperty Name="mobile" ColumnName="mobile" />
+                <ScalarProperty Name="bbs_code" ColumnName="bbs_code" />
+                <ScalarProperty Name="nat_code" ColumnName="nat_code" />
+                <ScalarProperty Name="cert_no" ColumnName="cert_no" />
+                <ScalarProperty Name="father" ColumnName="father" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="meeting_print">
+            <EntityTypeMapping TypeName="capitalModel.meeting_print">
+              <MappingFragment StoreEntitySet="meeting_print">
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="print_flag" ColumnName="print_flag" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+                <ScalarProperty Name="comp_id" ColumnName="comp_id" />
+                <ScalarProperty Name="shr_meet_date" ColumnName="shr_meet_date" />
+                <ScalarProperty Name="shr_meet_kind" ColumnName="shr_meet_kind" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

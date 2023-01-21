@@ -1,0 +1,571 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="seasonFbShrModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="SHAREHOLDER_REL">
+          <Key>
+            <PropertyRef Name="SHRH_CODE" />
+            <PropertyRef Name="SHA_SHRH_CODE" />
+            <PropertyRef Name="EFF_DATE" />
+          </Key>
+          <Property Name="SHRH_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SHA_SHRH_CODE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="USER_ID" Type="varchar" MaxLength="25" />
+          <Property Name="SHR_REL_KIND" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="UPDATE_DATE" Type="datetime" />
+          <Property Name="INLAW" Type="char" MaxLength="1" />
+          <Property Name="MEETING_FLAG" Type="char" MaxLength="1" />
+          <Property Name="NOTE" Type="text" />
+          <Property Name="TBL_DATE" Type="char" MaxLength="8" />
+          <Property Name="EFF_DATE" Type="char" MaxLength="8" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'season_fb_shr.dbo.v_fb_shareholder' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_fb_shareholder">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="inst_kind" />
+            <PropertyRef Name="pkey_shrh_code" />
+          </Key>
+          <Property Name="shrh_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="seplc_code" Type="varchar" MaxLength="255" />
+          <Property Name="natid" Type="varchar" MaxLength="255" />
+          <Property Name="tax_level" Type="varchar" MaxLength="255" />
+          <Property Name="bank_code" Type="varchar" MaxLength="255" />
+          <Property Name="bank_branch_code" Type="varchar" MaxLength="255" />
+          <Property Name="user_id" Type="varchar" MaxLength="25" />
+          <Property Name="sp_shrh_code" Type="varchar" MaxLength="255" />
+          <Property Name="cityid" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="tel_no_1" Type="char" MaxLength="15" />
+          <Property Name="cell_phone" Type="char" MaxLength="15" />
+          <Property Name="fax_no" Type="char" MaxLength="15" />
+          <Property Name="zip_code" Type="char" MaxLength="10" />
+          <Property Name="tel_no_2" Type="char" MaxLength="15" />
+          <Property Name="e_mail" Type="varchar" MaxLength="100" />
+          <Property Name="post_box" Type="varchar" MaxLength="100" />
+          <Property Name="cert_no" Type="varchar" MaxLength="20" />
+          <Property Name="surname1" Type="varchar" MaxLength="100" />
+          <Property Name="name1" Type="varchar" MaxLength="100" />
+          <Property Name="father1" Type="varchar" MaxLength="100" />
+          <Property Name="d1_issu_cert" Type="char" MaxLength="8" />
+          <Property Name="cert_city" Type="varchar" MaxLength="255" />
+          <Property Name="d1_birth" Type="char" MaxLength="8" />
+          <Property Name="birth_city" Type="varchar" MaxLength="255" />
+          <Property Name="serial_cert_no" Type="varchar" MaxLength="20" />
+          <Property Name="nat_code" Type="char" MaxLength="10" />
+          <Property Name="buss_kind" Type="varchar" MaxLength="255" />
+          <Property Name="inst_kind" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="eco_code" Type="char" MaxLength="12" />
+          <Property Name="tbl_date" Type="char" MaxLength="8" />
+          <Property Name="shrh_kind" Type="varchar" MaxLength="5" />
+          <Property Name="shrh_activity" Type="varchar" MaxLength="62" />
+          <Property Name="shrh_exch_code" Type="varchar" MaxLength="20" />
+          <Property Name="shrh_first_serial" Type="varchar" MaxLength="20" />
+          <Property Name="note" Type="text" />
+          <Property Name="shrh_acc" Type="varchar" MaxLength="30" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="shrh_bbs_code" Type="varchar" MaxLength="20" />
+          <Property Name="shrh_pwd" Type="varchar" MaxLength="20" />
+          <Property Name="acc_kind_code" Type="varchar" MaxLength="255" />
+          <Property Name="sp_class_code" Type="varchar" MaxLength="255" />
+          <Property Name="sp_class_item_code" Type="varchar" MaxLength="255" />
+          <Property Name="sex" Type="varchar" MaxLength="3" />
+          <Property Name="sp_bank_code" Type="varchar" MaxLength="30" />
+          <Property Name="bank_acc_name" Type="varchar" MaxLength="100" />
+          <Property Name="d1_bank" Type="char" MaxLength="8" />
+          <Property Name="pkey_shrh_code" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'season_fb_shr.dbo.v_fb_shareholder2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_fb_shareholder2">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="inst_kind" />
+            <PropertyRef Name="pkey_shrh_code" />
+          </Key>
+          <Property Name="shrh_code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="seplc_code" Type="varchar" MaxLength="255" />
+          <Property Name="nat_desc" Type="varchar" MaxLength="255" />
+          <Property Name="tax_level" Type="varchar" MaxLength="255" />
+          <Property Name="bank_desc" Type="varchar" MaxLength="255" />
+          <Property Name="bank_branch_code" Type="varchar" MaxLength="20" />
+          <Property Name="bank_branch_desc" Type="varchar" MaxLength="255" />
+          <Property Name="user_id" Type="varchar" MaxLength="25" />
+          <Property Name="sp_shrh_code" Type="varchar" MaxLength="20" />
+          <Property Name="special_desc" Type="varchar" MaxLength="255" />
+          <Property Name="cityid" Type="varchar" MaxLength="255" />
+          <Property Name="address" Type="varchar" MaxLength="255" />
+          <Property Name="tel_no_1" Type="char" MaxLength="15" />
+          <Property Name="cell_phone" Type="char" MaxLength="15" />
+          <Property Name="fax_no" Type="char" MaxLength="15" />
+          <Property Name="zip_code" Type="char" MaxLength="10" />
+          <Property Name="tel_no_2" Type="char" MaxLength="15" />
+          <Property Name="e_mail" Type="varchar" MaxLength="100" />
+          <Property Name="post_box" Type="varchar" MaxLength="100" />
+          <Property Name="cert_no" Type="varchar" MaxLength="20" />
+          <Property Name="surname1" Type="varchar" MaxLength="100" />
+          <Property Name="name1" Type="varchar" MaxLength="100" />
+          <Property Name="father1" Type="varchar" MaxLength="100" />
+          <Property Name="d1_issu_cert" Type="char" MaxLength="8" />
+          <Property Name="cert_place" Type="varchar" MaxLength="255" />
+          <Property Name="d1_birth" Type="char" MaxLength="8" />
+          <Property Name="birth_city" Type="varchar" MaxLength="255" />
+          <Property Name="serial_cert_no" Type="varchar" MaxLength="20" />
+          <Property Name="nat_code" Type="varchar" MaxLength="20" />
+          <Property Name="buss_kind" Type="varchar" MaxLength="255" />
+          <Property Name="inst_kind" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="eco_code" Type="char" MaxLength="12" />
+          <Property Name="tbl_date" Type="char" MaxLength="8" />
+          <Property Name="shrh_kind" Type="char" MaxLength="1" />
+          <Property Name="shrh_kind_desc" Type="varchar" MaxLength="5" />
+          <Property Name="shrh_activity" Type="varchar" MaxLength="62" />
+          <Property Name="shrh_exch_code" Type="varchar" MaxLength="20" />
+          <Property Name="shrh_first_serial" Type="varchar" MaxLength="20" />
+          <Property Name="note" Type="varchar" MaxLength="30" />
+          <Property Name="shrh_acc" Type="varchar" MaxLength="30" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="shrh_bbs_code" Type="varchar" MaxLength="20" />
+          <Property Name="shrh_pwd" Type="varchar" MaxLength="20" />
+          <Property Name="acc_kind_code" Type="varchar" MaxLength="20" />
+          <Property Name="acc_kind_desc" Type="varchar" MaxLength="255" />
+          <Property Name="sp_class_code" Type="varchar" MaxLength="255" />
+          <Property Name="sp_class_item_code" Type="varchar" MaxLength="255" />
+          <Property Name="sex" Type="varchar" MaxLength="3" />
+          <Property Name="sp_bank_code" Type="varchar" MaxLength="30" />
+          <Property Name="bank_acc_name" Type="varchar" MaxLength="100" />
+          <Property Name="d1_bank" Type="char" MaxLength="8" />
+          <Property Name="pkey_shrh_code" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <Function Name="sp_fb_shr_trans" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="shrh_code" Type="varchar" Mode="In" />
+          <Parameter Name="eff_date" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="seasonFbShrModelStoreContainer">
+          <EntitySet Name="SHAREHOLDER_REL" EntityType="Self.SHAREHOLDER_REL" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_fb_shareholder" EntityType="Self.v_fb_shareholder" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_fb_shareholder].[shrh_code] AS [shrh_code], 
+    [v_fb_shareholder].[seplc_code] AS [seplc_code], 
+    [v_fb_shareholder].[natid] AS [natid], 
+    [v_fb_shareholder].[tax_level] AS [tax_level], 
+    [v_fb_shareholder].[bank_code] AS [bank_code], 
+    [v_fb_shareholder].[bank_branch_code] AS [bank_branch_code], 
+    [v_fb_shareholder].[user_id] AS [user_id], 
+    [v_fb_shareholder].[sp_shrh_code] AS [sp_shrh_code], 
+    [v_fb_shareholder].[cityid] AS [cityid], 
+    [v_fb_shareholder].[address] AS [address], 
+    [v_fb_shareholder].[tel_no_1] AS [tel_no_1], 
+    [v_fb_shareholder].[cell_phone] AS [cell_phone], 
+    [v_fb_shareholder].[fax_no] AS [fax_no], 
+    [v_fb_shareholder].[zip_code] AS [zip_code], 
+    [v_fb_shareholder].[tel_no_2] AS [tel_no_2], 
+    [v_fb_shareholder].[e_mail] AS [e_mail], 
+    [v_fb_shareholder].[post_box] AS [post_box], 
+    [v_fb_shareholder].[cert_no] AS [cert_no], 
+    [v_fb_shareholder].[surname1] AS [surname1], 
+    [v_fb_shareholder].[name1] AS [name1], 
+    [v_fb_shareholder].[father1] AS [father1], 
+    [v_fb_shareholder].[d1_issu_cert] AS [d1_issu_cert], 
+    [v_fb_shareholder].[cert_city] AS [cert_city], 
+    [v_fb_shareholder].[d1_birth] AS [d1_birth], 
+    [v_fb_shareholder].[birth_city] AS [birth_city], 
+    [v_fb_shareholder].[serial_cert_no] AS [serial_cert_no], 
+    [v_fb_shareholder].[nat_code] AS [nat_code], 
+    [v_fb_shareholder].[buss_kind] AS [buss_kind], 
+    [v_fb_shareholder].[inst_kind] AS [inst_kind], 
+    [v_fb_shareholder].[eco_code] AS [eco_code], 
+    [v_fb_shareholder].[tbl_date] AS [tbl_date], 
+    [v_fb_shareholder].[shrh_kind] AS [shrh_kind], 
+    [v_fb_shareholder].[shrh_activity] AS [shrh_activity], 
+    [v_fb_shareholder].[shrh_exch_code] AS [shrh_exch_code], 
+    [v_fb_shareholder].[shrh_first_serial] AS [shrh_first_serial], 
+    [v_fb_shareholder].[note] AS [note], 
+    [v_fb_shareholder].[shrh_acc] AS [shrh_acc], 
+    [v_fb_shareholder].[update_date] AS [update_date], 
+    [v_fb_shareholder].[shrh_bbs_code] AS [shrh_bbs_code], 
+    [v_fb_shareholder].[shrh_pwd] AS [shrh_pwd], 
+    [v_fb_shareholder].[acc_kind_code] AS [acc_kind_code], 
+    [v_fb_shareholder].[sp_class_code] AS [sp_class_code], 
+    [v_fb_shareholder].[sp_class_item_code] AS [sp_class_item_code], 
+    [v_fb_shareholder].[sex] AS [sex], 
+    [v_fb_shareholder].[sp_bank_code] AS [sp_bank_code], 
+    [v_fb_shareholder].[bank_acc_name] AS [bank_acc_name], 
+    [v_fb_shareholder].[d1_bank] AS [d1_bank], 
+    [v_fb_shareholder].[pkey_shrh_code] AS [pkey_shrh_code]
+    FROM [dbo].[v_fb_shareholder] AS [v_fb_shareholder]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_fb_shareholder2" EntityType="Self.v_fb_shareholder2" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_fb_shareholder2].[shrh_code] AS [shrh_code], 
+    [v_fb_shareholder2].[seplc_code] AS [seplc_code], 
+    [v_fb_shareholder2].[nat_desc] AS [nat_desc], 
+    [v_fb_shareholder2].[tax_level] AS [tax_level], 
+    [v_fb_shareholder2].[bank_desc] AS [bank_desc], 
+    [v_fb_shareholder2].[bank_branch_code] AS [bank_branch_code], 
+    [v_fb_shareholder2].[bank_branch_desc] AS [bank_branch_desc], 
+    [v_fb_shareholder2].[user_id] AS [user_id], 
+    [v_fb_shareholder2].[sp_shrh_code] AS [sp_shrh_code], 
+    [v_fb_shareholder2].[special_desc] AS [special_desc], 
+    [v_fb_shareholder2].[cityid] AS [cityid], 
+    [v_fb_shareholder2].[address] AS [address], 
+    [v_fb_shareholder2].[tel_no_1] AS [tel_no_1], 
+    [v_fb_shareholder2].[cell_phone] AS [cell_phone], 
+    [v_fb_shareholder2].[fax_no] AS [fax_no], 
+    [v_fb_shareholder2].[zip_code] AS [zip_code], 
+    [v_fb_shareholder2].[tel_no_2] AS [tel_no_2], 
+    [v_fb_shareholder2].[e_mail] AS [e_mail], 
+    [v_fb_shareholder2].[post_box] AS [post_box], 
+    [v_fb_shareholder2].[cert_no] AS [cert_no], 
+    [v_fb_shareholder2].[surname1] AS [surname1], 
+    [v_fb_shareholder2].[name1] AS [name1], 
+    [v_fb_shareholder2].[father1] AS [father1], 
+    [v_fb_shareholder2].[d1_issu_cert] AS [d1_issu_cert], 
+    [v_fb_shareholder2].[cert_place] AS [cert_place], 
+    [v_fb_shareholder2].[d1_birth] AS [d1_birth], 
+    [v_fb_shareholder2].[birth_city] AS [birth_city], 
+    [v_fb_shareholder2].[serial_cert_no] AS [serial_cert_no], 
+    [v_fb_shareholder2].[nat_code] AS [nat_code], 
+    [v_fb_shareholder2].[buss_kind] AS [buss_kind], 
+    [v_fb_shareholder2].[inst_kind] AS [inst_kind], 
+    [v_fb_shareholder2].[eco_code] AS [eco_code], 
+    [v_fb_shareholder2].[tbl_date] AS [tbl_date], 
+    [v_fb_shareholder2].[shrh_kind] AS [shrh_kind], 
+    [v_fb_shareholder2].[shrh_kind_desc] AS [shrh_kind_desc], 
+    [v_fb_shareholder2].[shrh_activity] AS [shrh_activity], 
+    [v_fb_shareholder2].[shrh_exch_code] AS [shrh_exch_code], 
+    [v_fb_shareholder2].[shrh_first_serial] AS [shrh_first_serial], 
+    [v_fb_shareholder2].[note] AS [note], 
+    [v_fb_shareholder2].[shrh_acc] AS [shrh_acc], 
+    [v_fb_shareholder2].[update_date] AS [update_date], 
+    [v_fb_shareholder2].[shrh_bbs_code] AS [shrh_bbs_code], 
+    [v_fb_shareholder2].[shrh_pwd] AS [shrh_pwd], 
+    [v_fb_shareholder2].[acc_kind_code] AS [acc_kind_code], 
+    [v_fb_shareholder2].[acc_kind_desc] AS [acc_kind_desc], 
+    [v_fb_shareholder2].[sp_class_code] AS [sp_class_code], 
+    [v_fb_shareholder2].[sp_class_item_code] AS [sp_class_item_code], 
+    [v_fb_shareholder2].[sex] AS [sex], 
+    [v_fb_shareholder2].[sp_bank_code] AS [sp_bank_code], 
+    [v_fb_shareholder2].[bank_acc_name] AS [bank_acc_name], 
+    [v_fb_shareholder2].[d1_bank] AS [d1_bank], 
+    [v_fb_shareholder2].[pkey_shrh_code] AS [pkey_shrh_code]
+    FROM [dbo].[v_fb_shareholder2] AS [v_fb_shareholder2]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="seasonFbShrModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="seasonFbShrEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_fb_shr_trans" ReturnType="Collection(seasonFbShrModel.sp_fb_shr_trans_Result)">
+            <Parameter Name="shrh_code" Mode="In" Type="String" />
+            <Parameter Name="eff_date" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="v_fb_shareholder" EntityType="seasonFbShrModel.v_fb_shareholder" />
+          <EntitySet Name="v_fb_shareholder2" EntityType="seasonFbShrModel.v_fb_shareholder2" />
+          <EntitySet Name="SHAREHOLDER_REL" EntityType="seasonFbShrModel.SHAREHOLDER_REL" />
+        </EntityContainer>
+        <ComplexType Name="sp_fb_shr_trans_Result">
+          <Property Type="String" Name="shrh_code" Nullable="false" MaxLength="20" />
+          <Property Type="Int64" Name="share" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="v_fb_shareholder">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="inst_kind" />
+            <PropertyRef Name="pkey_shrh_code" />
+          </Key>
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="seplc_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="natid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tax_level" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bank_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bank_branch_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sp_shrh_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cityid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel_no_1" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cell_phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="fax_no" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="tel_no_2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="e_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="post_box" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cert_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="surname1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="name1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="father1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="d1_issu_cert" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cert_city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="d1_birth" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="birth_city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serial_cert_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nat_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="buss_kind" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="inst_kind" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="eco_code" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="tbl_date" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="shrh_kind" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_activity" Type="String" MaxLength="62" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_exch_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_first_serial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_acc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="shrh_bbs_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="acc_kind_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sp_class_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sp_class_item_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sp_bank_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="bank_acc_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="d1_bank" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="pkey_shrh_code" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_fb_shareholder2">
+          <Key>
+            <PropertyRef Name="shrh_code" />
+            <PropertyRef Name="inst_kind" />
+            <PropertyRef Name="pkey_shrh_code" />
+          </Key>
+          <Property Name="shrh_code" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="seplc_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="nat_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tax_level" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bank_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="bank_branch_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="bank_branch_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="user_id" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="sp_shrh_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="special_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="cityid" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="tel_no_1" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="cell_phone" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="fax_no" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="zip_code" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="tel_no_2" Type="String" MaxLength="15" FixedLength="true" Unicode="false" />
+          <Property Name="e_mail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="post_box" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="cert_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="surname1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="name1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="father1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="d1_issu_cert" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="cert_place" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="d1_birth" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="birth_city" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="serial_cert_no" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="nat_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="buss_kind" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="inst_kind" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="eco_code" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="tbl_date" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="shrh_kind" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="shrh_kind_desc" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_activity" Type="String" MaxLength="62" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_exch_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_first_serial" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_acc" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="shrh_bbs_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="shrh_pwd" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="acc_kind_code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="acc_kind_desc" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sp_class_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sp_class_item_code" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="sex" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="sp_bank_code" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="bank_acc_name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="d1_bank" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="pkey_shrh_code" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SHAREHOLDER_REL">
+          <Key>
+            <PropertyRef Name="SHRH_CODE" />
+            <PropertyRef Name="SHA_SHRH_CODE" />
+            <PropertyRef Name="EFF_DATE" />
+          </Key>
+          <Property Name="SHRH_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="SHA_SHRH_CODE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="USER_ID" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="SHR_REL_KIND" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_DATE" Type="DateTime" Precision="3" />
+          <Property Name="INLAW" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="MEETING_FLAG" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="NOTE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TBL_DATE" Type="String" MaxLength="8" FixedLength="true" Unicode="false" />
+          <Property Name="EFF_DATE" Type="String" Nullable="false" MaxLength="8" FixedLength="true" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="seasonFbShrModelStoreContainer" CdmEntityContainer="seasonFbShrEntities">
+          <FunctionImportMapping FunctionImportName="sp_fb_shr_trans" FunctionName="seasonFbShrModel.Store.sp_fb_shr_trans">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="seasonFbShrModel.sp_fb_shr_trans_Result">
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+                <ScalarProperty Name="share" ColumnName="share" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="v_fb_shareholder">
+            <EntityTypeMapping TypeName="seasonFbShrModel.v_fb_shareholder">
+              <MappingFragment StoreEntitySet="v_fb_shareholder">
+                <ScalarProperty Name="pkey_shrh_code" ColumnName="pkey_shrh_code" />
+                <ScalarProperty Name="d1_bank" ColumnName="d1_bank" />
+                <ScalarProperty Name="bank_acc_name" ColumnName="bank_acc_name" />
+                <ScalarProperty Name="sp_bank_code" ColumnName="sp_bank_code" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="sp_class_item_code" ColumnName="sp_class_item_code" />
+                <ScalarProperty Name="sp_class_code" ColumnName="sp_class_code" />
+                <ScalarProperty Name="acc_kind_code" ColumnName="acc_kind_code" />
+                <ScalarProperty Name="shrh_pwd" ColumnName="shrh_pwd" />
+                <ScalarProperty Name="shrh_bbs_code" ColumnName="shrh_bbs_code" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="shrh_acc" ColumnName="shrh_acc" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="shrh_first_serial" ColumnName="shrh_first_serial" />
+                <ScalarProperty Name="shrh_exch_code" ColumnName="shrh_exch_code" />
+                <ScalarProperty Name="shrh_activity" ColumnName="shrh_activity" />
+                <ScalarProperty Name="shrh_kind" ColumnName="shrh_kind" />
+                <ScalarProperty Name="tbl_date" ColumnName="tbl_date" />
+                <ScalarProperty Name="eco_code" ColumnName="eco_code" />
+                <ScalarProperty Name="inst_kind" ColumnName="inst_kind" />
+                <ScalarProperty Name="buss_kind" ColumnName="buss_kind" />
+                <ScalarProperty Name="nat_code" ColumnName="nat_code" />
+                <ScalarProperty Name="serial_cert_no" ColumnName="serial_cert_no" />
+                <ScalarProperty Name="birth_city" ColumnName="birth_city" />
+                <ScalarProperty Name="d1_birth" ColumnName="d1_birth" />
+                <ScalarProperty Name="cert_city" ColumnName="cert_city" />
+                <ScalarProperty Name="d1_issu_cert" ColumnName="d1_issu_cert" />
+                <ScalarProperty Name="father1" ColumnName="father1" />
+                <ScalarProperty Name="name1" ColumnName="name1" />
+                <ScalarProperty Name="surname1" ColumnName="surname1" />
+                <ScalarProperty Name="cert_no" ColumnName="cert_no" />
+                <ScalarProperty Name="post_box" ColumnName="post_box" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="tel_no_2" ColumnName="tel_no_2" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="fax_no" ColumnName="fax_no" />
+                <ScalarProperty Name="cell_phone" ColumnName="cell_phone" />
+                <ScalarProperty Name="tel_no_1" ColumnName="tel_no_1" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+                <ScalarProperty Name="sp_shrh_code" ColumnName="sp_shrh_code" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="bank_branch_code" ColumnName="bank_branch_code" />
+                <ScalarProperty Name="bank_code" ColumnName="bank_code" />
+                <ScalarProperty Name="tax_level" ColumnName="tax_level" />
+                <ScalarProperty Name="natid" ColumnName="natid" />
+                <ScalarProperty Name="seplc_code" ColumnName="seplc_code" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_fb_shareholder2">
+            <EntityTypeMapping TypeName="seasonFbShrModel.v_fb_shareholder2">
+              <MappingFragment StoreEntitySet="v_fb_shareholder2">
+                <ScalarProperty Name="pkey_shrh_code" ColumnName="pkey_shrh_code" />
+                <ScalarProperty Name="d1_bank" ColumnName="d1_bank" />
+                <ScalarProperty Name="bank_acc_name" ColumnName="bank_acc_name" />
+                <ScalarProperty Name="sp_bank_code" ColumnName="sp_bank_code" />
+                <ScalarProperty Name="sex" ColumnName="sex" />
+                <ScalarProperty Name="sp_class_item_code" ColumnName="sp_class_item_code" />
+                <ScalarProperty Name="sp_class_code" ColumnName="sp_class_code" />
+                <ScalarProperty Name="acc_kind_desc" ColumnName="acc_kind_desc" />
+                <ScalarProperty Name="acc_kind_code" ColumnName="acc_kind_code" />
+                <ScalarProperty Name="shrh_pwd" ColumnName="shrh_pwd" />
+                <ScalarProperty Name="shrh_bbs_code" ColumnName="shrh_bbs_code" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="shrh_acc" ColumnName="shrh_acc" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="shrh_first_serial" ColumnName="shrh_first_serial" />
+                <ScalarProperty Name="shrh_exch_code" ColumnName="shrh_exch_code" />
+                <ScalarProperty Name="shrh_activity" ColumnName="shrh_activity" />
+                <ScalarProperty Name="shrh_kind_desc" ColumnName="shrh_kind_desc" />
+                <ScalarProperty Name="shrh_kind" ColumnName="shrh_kind" />
+                <ScalarProperty Name="tbl_date" ColumnName="tbl_date" />
+                <ScalarProperty Name="eco_code" ColumnName="eco_code" />
+                <ScalarProperty Name="inst_kind" ColumnName="inst_kind" />
+                <ScalarProperty Name="buss_kind" ColumnName="buss_kind" />
+                <ScalarProperty Name="nat_code" ColumnName="nat_code" />
+                <ScalarProperty Name="serial_cert_no" ColumnName="serial_cert_no" />
+                <ScalarProperty Name="birth_city" ColumnName="birth_city" />
+                <ScalarProperty Name="d1_birth" ColumnName="d1_birth" />
+                <ScalarProperty Name="cert_place" ColumnName="cert_place" />
+                <ScalarProperty Name="d1_issu_cert" ColumnName="d1_issu_cert" />
+                <ScalarProperty Name="father1" ColumnName="father1" />
+                <ScalarProperty Name="name1" ColumnName="name1" />
+                <ScalarProperty Name="surname1" ColumnName="surname1" />
+                <ScalarProperty Name="cert_no" ColumnName="cert_no" />
+                <ScalarProperty Name="post_box" ColumnName="post_box" />
+                <ScalarProperty Name="e_mail" ColumnName="e_mail" />
+                <ScalarProperty Name="tel_no_2" ColumnName="tel_no_2" />
+                <ScalarProperty Name="zip_code" ColumnName="zip_code" />
+                <ScalarProperty Name="fax_no" ColumnName="fax_no" />
+                <ScalarProperty Name="cell_phone" ColumnName="cell_phone" />
+                <ScalarProperty Name="tel_no_1" ColumnName="tel_no_1" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="cityid" ColumnName="cityid" />
+                <ScalarProperty Name="special_desc" ColumnName="special_desc" />
+                <ScalarProperty Name="sp_shrh_code" ColumnName="sp_shrh_code" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="bank_branch_desc" ColumnName="bank_branch_desc" />
+                <ScalarProperty Name="bank_branch_code" ColumnName="bank_branch_code" />
+                <ScalarProperty Name="bank_desc" ColumnName="bank_desc" />
+                <ScalarProperty Name="tax_level" ColumnName="tax_level" />
+                <ScalarProperty Name="nat_desc" ColumnName="nat_desc" />
+                <ScalarProperty Name="seplc_code" ColumnName="seplc_code" />
+                <ScalarProperty Name="shrh_code" ColumnName="shrh_code" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SHAREHOLDER_REL">
+            <EntityTypeMapping TypeName="seasonFbShrModel.SHAREHOLDER_REL">
+              <MappingFragment StoreEntitySet="SHAREHOLDER_REL">
+                <ScalarProperty Name="EFF_DATE" ColumnName="EFF_DATE" />
+                <ScalarProperty Name="TBL_DATE" ColumnName="TBL_DATE" />
+                <ScalarProperty Name="NOTE" ColumnName="NOTE" />
+                <ScalarProperty Name="MEETING_FLAG" ColumnName="MEETING_FLAG" />
+                <ScalarProperty Name="INLAW" ColumnName="INLAW" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="SHR_REL_KIND" ColumnName="SHR_REL_KIND" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="SHA_SHRH_CODE" ColumnName="SHA_SHRH_CODE" />
+                <ScalarProperty Name="SHRH_CODE" ColumnName="SHRH_CODE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ca4e37ec7c354cf18b9f870db01994ad" Name="Diagram1" ZoomLevel="57">
+        <EntityTypeShape EntityType="capitalModel.management_user" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="capitalModel.shr_meeting" Width="1.5" PointX="5.25" PointY="7.625" />
+        <EntityTypeShape EntityType="capitalModel.shrh_vote_sub" Width="1.5" PointX="7.5" PointY="8.375" />
+        <EntityTypeShape EntityType="capitalModel.svot_item" Width="1.5" PointX="9.75" PointY="8.25" />
+        <EntityTypeShape EntityType="capitalModel.sysdiagram" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="capitalModel.FK_shr_meeting_management_user" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_sub_management_user" />
+        <AssociationConnector Association="capitalModel.FK_svot_item_management_user" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_sub_shr_meeting" />
+        <AssociationConnector Association="capitalModel.FK_svot_item_shrh_vote_sub" />
+        <EntityTypeShape EntityType="capitalModel.question" Width="1.5" PointX="12.75" PointY="4.75" />
+        <AssociationConnector Association="capitalModel.FK_questions_shr_meeting" />
+        <EntityTypeShape EntityType="capitalModel.shrh_vote" Width="1.5" PointX="15.25" PointY="8.25" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_management_user" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_shr_meeting" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_svot_item" />
+        <EntityTypeShape EntityType="capitalModel.Lock" Width="1.5" PointX="5.375" PointY="3.75" />
+        <EntityTypeShape EntityType="capitalModel.company" Width="1.5" PointX="0.5" PointY="4.75" />
+        <EntityTypeShape EntityType="capitalModel.meeting_users" Width="1.5" PointX="9.125" PointY="4.75" />
+        <EntityTypeShape EntityType="capitalModel.shareholder" Width="1.5" PointX="2.875" PointY="0.5" />
+        <AssociationConnector Association="capitalModel.FK_management_user_company" />
+        <AssociationConnector Association="capitalModel.FK_questions_company" />
+        <AssociationConnector Association="capitalModel.FK_shareholder_company" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_company" />
+        <AssociationConnector Association="capitalModel.FK_svot_item_company" />
+        <AssociationConnector Association="capitalModel.FK_meeting_users_shareholder" />
+        <AssociationConnector Association="capitalModel.FK_meeting_users_shr_meeting" />
+        <AssociationConnector Association="capitalModel.FK_questions_meeting_users" />
+        <AssociationConnector Association="capitalModel.FK_shrh_vote_meeting_users" />
+        <EntityTypeShape EntityType="capitalModel.meeting_print" Width="1.5" PointX="12.75" PointY="0.625" />
+        <AssociationConnector Association="capitalModel.FK_meeting_print_management_user" />
+        <AssociationConnector Association="capitalModel.FK_meeting_print_shareholder" />
+        <AssociationConnector Association="capitalModel.FK_meeting_print_shr_meeting" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
